@@ -1,0 +1,13 @@
+# پوشه node_modules
+node_modules/
+
+# فایل‌های محیطی (توکن و غیره)
+.env
+
+# لاگ‌ها
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# فایل‌های سیستم
+.DS_Store
