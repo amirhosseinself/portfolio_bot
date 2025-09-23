@@ -1,4 +1,3 @@
-// app/api/bot/route.ts
 import { Bot, webhookCallback } from "grammy";
 
 const bot = new Bot(process.env.BOT_TOKEN);
