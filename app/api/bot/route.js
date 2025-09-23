@@ -16,35 +16,30 @@ bot.command("start", (ctx) =>
   })
 );
 
-bot.callbackQuery("about", (ctx) =>
-  ctx
-    .answerCallbackQuery()
-    .then(() =>
-      ctx.reply(
-        "من یک برنامه‌نویس فرانت‌اند با تجربه در Next.js و TypeScript هستم."
-      )
-    )
-);
+bot.callbackQuery("about", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  await ctx.reply(
+    "من یک برنامه‌نویس فرانت‌اند با تجربه در Next.js و TypeScript هستم."
+  );
+});
 
-bot.callbackQuery("skills", (ctx) =>
-  ctx
-    .answerCallbackQuery()
-    .then(() =>
-      ctx.reply(
-        "مهارت‌ها: TypeScript, React, Next.js, Node.js, TailwindCSS و ..."
-      )
-    )
-);
+bot.callbackQuery("skills", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  await ctx.reply(
+    "مهارت‌ها: TypeScript, React, Next.js, Node.js, TailwindCSS و ..."
+  );
+});
 
-bot.callbackQuery("projects", (ctx) =>
-  ctx
-    .answerCallbackQuery()
-    .then(() =>
-      ctx.reply(
-        "چند پروژه: وب‌اپ مدیریت اینستاگرام، داشبورد ادمین، سایت‌های شخصی و ..."
-      )
-    )
-);
+bot.callbackQuery("projects", async (ctx) => {
+  await ctx.answerCallbackQuery();
+  await ctx.reply(
+    "چند پروژه: وب‌اپ مدیریت اینستاگرام، داشبورد ادمین، سایت‌های شخصی و ..."
+  );
+});
 
-// 🔥 نکته مهم: اینجا باید به جای export default از export POST استفاده بشه
-export const POST = webhookCallback(bot, "std/http");
+// تبدیل webhook به هندلر Next.js
+const handler = webhookCallback(bot, "std/http");
+
+export async function POST(req) {
+  return handler(req);
+}
