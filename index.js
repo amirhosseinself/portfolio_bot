@@ -41,7 +41,10 @@ bot.callbackQuery("projects", async (ctx) => {
 const app = express();
 app.use(express.json());
 
-app.post("/api/bot", webhookCallback(bot, "express"));
+app.post("/api/bot", (req, res) => {
+  console.log("Received update:", req.body);
+  webhookCallback(bot, "express")(req, res);
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
