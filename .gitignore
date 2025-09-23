@@ -1,13 +1,46 @@
-# پوشه node_modules
+# =========================
+# Node.js
+# =========================
 node_modules/
-
-# فایل‌های محیطی (توکن و غیره)
-.env
-
-# لاگ‌ها
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
 
-# فایل‌های سیستم
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*.local
+
+# =========================
+# Build outputs (Vercel / Next.js)
+# =========================
+.vercel/
+.next/
+out/
+dist/
+
+# =========================
+# OS / Editor junk files
+# =========================
 .DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# =========================
+# Logs
+# =========================
+logs
+*.log
+*.gz
+
+# =========================
+# Coverage / Tests
+# =========================
+coverage/
+*.lcov
