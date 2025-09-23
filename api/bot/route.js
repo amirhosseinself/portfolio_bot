@@ -1,8 +1,9 @@
+// app/api/bot/route.ts
 import { Bot, webhookCallback } from "grammy";
 
 const bot = new Bot(process.env.BOT_TOKEN);
 
-// وقتی کاربر /start بزنه
+// دستورات ربات
 bot.command("start", (ctx) =>
   ctx.reply("سلام! 👋 من ربات رزومه‌ی امیرحسین هستم.", {
     reply_markup: {
@@ -15,7 +16,6 @@ bot.command("start", (ctx) =>
   })
 );
 
-// هندل کردن کلیک روی دکمه‌ها
 bot.callbackQuery("about", (ctx) =>
   ctx
     .answerCallbackQuery()
@@ -46,5 +46,5 @@ bot.callbackQuery("projects", (ctx) =>
     )
 );
 
-// لازم برای Vercel
-export default webhookCallback(bot, "vercel");
+// 🔥 نکته مهم: اینجا باید به جای export default از export POST استفاده بشه
+export const POST = webhookCallback(bot, "std/http");
