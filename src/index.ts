@@ -1,8 +1,8 @@
 import { Bot } from "grammy";
-import { registerStartCommand } from "./commands/start";
-import { registerAboutCommand } from "./commands/about";
-import { registerSkillsCommand } from "./commands/skills";
-import { registerProjectsCommand } from "./commands/projects";
+import { registerStartCommand } from "./commands/start.js";
+import { registerAboutCommand } from "./commands/about.js";
+import { registerSkillsCommand } from "./commands/skills.js";
+import { registerProjectsCommand } from "./commands/projects.js";
 
 const bot = new Bot(process.env.BOT_TOKEN!);
 
