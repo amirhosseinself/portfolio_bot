@@ -4,6 +4,7 @@
     "name": "Amirhossein Aghamohammadi",
     "email": "haj.amir.dev@gmail.com"
   },
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
