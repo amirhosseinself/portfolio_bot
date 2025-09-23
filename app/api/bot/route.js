@@ -10,7 +10,7 @@ bot.command("start", (ctx) =>
       inline_keyboard: [
         [{ text: "👤 درباره من", callback_data: "about" }],
         [{ text: "💻 مهارت‌ها", callback_data: "skills" }],
-        [{ text: "📂 نمونه کارها", callback_data: "projects" }],
+        [{ text: "📂 نمونه کارهام", callback_data: "projects" }],
       ],
     },
   })
