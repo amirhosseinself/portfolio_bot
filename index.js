@@ -1,3 +1,4 @@
+import express from "express";
 import { Bot, webhookCallback } from "grammy";
 
 const bot = new Bot(process.env.BOT_TOKEN);
@@ -9,7 +10,7 @@ bot.command("start", (ctx) =>
       inline_keyboard: [
         [{ text: "👤 درباره من", callback_data: "about" }],
         [{ text: "💻 مهارت‌ها", callback_data: "skills" }],
-        [{ text: "📂 نمونه کارهام", callback_data: "projects" }],
+        [{ text: "📂 نمونه کارها", callback_data: "projects" }],
       ],
     },
   })
@@ -36,9 +37,13 @@ bot.callbackQuery("projects", async (ctx) => {
   );
 });
 
-// تبدیل webhook به هندلر Next.js
-const handler = webhookCallback(bot, "std/http");
+// Express
+const app = express();
+app.use(express.json());
 
-export async function POST(req) {
-  return handler(req);
-}
+app.post("/api/bot", webhookCallback(bot, "express"));
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
