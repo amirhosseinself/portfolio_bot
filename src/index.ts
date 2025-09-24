@@ -3,6 +3,7 @@ import { registerStartCommand } from "./commands/start.js";
 import { registerAboutCommand } from "./commands/about.js";
 import { registerSkillsCommand } from "./commands/skills.js";
 import { registerProjectsCommand } from "./commands/projects.js";
+import { registerContactCommand } from "./commands/contact.js";
 
 const bot = new Bot(process.env.BOT_TOKEN!);
 
@@ -11,5 +12,6 @@ registerStartCommand(bot);
 registerAboutCommand(bot);
 registerSkillsCommand(bot);
 registerProjectsCommand(bot);
+registerContactCommand(bot);
 
 export default bot;

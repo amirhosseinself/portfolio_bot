@@ -2,8 +2,7 @@ import { Bot } from "grammy";
 import { messages } from "../config/messages.js";
 
 export function registerAboutCommand(bot: Bot) {
-  bot.callbackQuery("about", async (ctx) => {
-    await ctx.answerCallbackQuery();
+  bot.hears("👤 درباره من", async (ctx) => {
     await ctx.reply(messages.about);
   });
 }

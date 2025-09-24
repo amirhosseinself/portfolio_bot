@@ -33,10 +33,4 @@ export function registerStartCommand(bot: Bot) {
       console.error("❌ خطا در ذخیره‌سازی یوزر:", err);
     }
   });
-
-  // هندلرها برای دکمه‌های کیبورد
-  bot.hears("👤 درباره من", (ctx) => ctx.reply(messages.about));
-  bot.hears("💻 مهارت‌ها", (ctx) => ctx.reply(messages.skills));
-  bot.hears("📂 نمونه کارها", (ctx) => ctx.reply(messages.projects));
-  bot.hears("📨 تماس", (ctx) => ctx.reply(messages.contact));
 }
