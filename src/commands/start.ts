@@ -1,5 +1,6 @@
 import { Bot } from "grammy";
 import { messages } from "../config/messages.js";
+import { mainKeyboard } from "../config/keyboards.js";
 import { prisma } from "../lib/prisma.js";
 
 // Queue ساده برای ذخیره‌سازی کاربران
@@ -36,13 +37,7 @@ export function registerStartCommand(bot: Bot) {
 
     // ارسال سریع پاسخ به کاربر
     await ctx.reply(messages.start, {
-      reply_markup: {
-        inline_keyboard: [
-          [{ text: "👤 درباره من", callback_data: "about" }],
-          [{ text: "💻 مهارت‌ها", callback_data: "skills" }],
-          [{ text: "📂 نمونه کارها", callback_data: "projects" }],
-        ],
-      },
+      reply_markup: mainKeyboard,
     });
 
     // افزودن عملیات لاگ گرفتن به queue
