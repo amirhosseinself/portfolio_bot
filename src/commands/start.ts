@@ -43,9 +43,20 @@ export function registerStartCommand(bot: Bot) {
     // افزودن عملیات لاگ گرفتن به queue
     logQueue.push(async () => {
       try {
-        await prisma.user.upsert({
+        console.log("📥 داده دریافتی:", {
+          id,
+          first_name,
+          last_name,
+          username,
+        });
+
+        const user = await prisma.user.upsert({
           where: { chatId: id.toString() },
-          update: {},
+          update: {
+            firstName: first_name,
+            lastName: last_name ?? null,
+            username: username ?? null,
+          },
           create: {
             chatId: id.toString(),
             firstName: first_name,
@@ -53,10 +64,10 @@ export function registerStartCommand(bot: Bot) {
             username: username ?? null,
           },
         });
-        console.log(`✅ کاربر لاگ شد: ${username || first_name} (${id})`);
-      } catch (err) {
-        console.error("❌ خطا در ذخیره‌سازی یوزر:", err);
-        // می‌توانیم دوباره push کنیم یا retry logic اضافه کنیم
+
+        console.log("✅ کاربر لاگ شد:", user);
+      } catch (err: any) {
+        console.error("❌ خطا در ذخیره‌سازی یوزر:", err.message, err.stack);
       }
     });
 
